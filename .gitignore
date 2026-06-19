@@ -1,0 +1,14 @@
+# Generated output (each run creates a fresh, blank workbook here)
+LHDN report/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS / Excel temp
+Thumbs.db
+.DS_Store
+~$*.xlsx
+
+# Python venv (created by generate.sh)
+.venv/
