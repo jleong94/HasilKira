@@ -1,0 +1,7 @@
+# Keep launcher scripts in the line endings each OS needs, no matter where they
+# are edited. Without this, a Windows checkout can save the shell scripts with
+# CRLF and they fail to run on macOS/Linux ("bad interpreter: bash^M").
+*.sh        text eol=lf
+*.command   text eol=lf
+*.cmd       text eol=crlf
+*.bat       text eol=crlf

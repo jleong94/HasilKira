@@ -23,7 +23,8 @@ The output file is named **`LHDN_Tax_Worksheet_YA<year>.xlsx`**, where `<year>` 
 
 ### 怎么用？
 - **Windows**:双击 **`generate.cmd`**。
-- **Mac / Linux**:在终端机运行 **`./generate.sh`**（首次需 `chmod +x generate.sh`）。
+- **Mac**:双击 **`generate.command`**（首次若系统提示「身份不明的开发者」，右键点该文件 → 打开 → 打开）。
+- **Linux**:在终端机运行 **`./generate.sh`**（若无法运行先 `chmod +x generate.sh`）。
 - 第一次运行若缺 Python 或 openpyxl，它会**自动安装**（需要网络）。
   - Windows 若提示"装好 Python 后关窗再双击一次"，照做即可。
 - 完成后会打开 `LHDN report` 文件夹，里面是 **`LHDN_Tax_Worksheet_YA<当年>.xlsx`**。
@@ -53,7 +54,8 @@ Gaji sahaja, gaji + perniagaan (cth. sawit), perniagaan sahaja, perniagaan + lai
 
 ### Cara guna
 - **Windows**: klik dua kali **`generate.cmd`**.
-- **Mac / Linux**: jalankan **`./generate.sh`** dalam terminal (kali pertama: `chmod +x generate.sh`).
+- **Mac**: klik dua kali **`generate.command`** (kali pertama, jika muncul amaran "pembangun tidak dikenali": klik kanan → Open → Open).
+- **Linux**: jalankan **`./generate.sh`** dalam terminal (jika gagal: `chmod +x generate.sh` dahulu).
 - Jika Python atau openpyxl tiada, ia **memasang secara automatik** (perlu internet).
 - Selesai — folder `LHDN report` terbuka dengan fail **`LHDN_Tax_Worksheet_YA<tahun>.xlsx`**.
 - Buka di Excel, **pilih bahasa di penjuru atas**, isi **sel KUNING** sahaja.
@@ -82,7 +84,8 @@ Employment income only, employment + business (e.g. oil-palm smallholding), busi
 
 ### How to use
 - **Windows**: double-click **`generate.cmd`**.
-- **Mac / Linux**: run **`./generate.sh`** in a terminal (first time: `chmod +x generate.sh`).
+- **Mac**: double-click **`generate.command`** (first time, if macOS warns about an "unidentified developer": right-click the file → Open → Open).
+- **Linux**: run **`./generate.sh`** in a terminal (if it won't run: `chmod +x generate.sh` first).
 - On first run, if Python or openpyxl is missing it will **install them automatically** (internet required).
   - On Windows, if it asks you to "close the window and double-click again" after installing Python, please do so.
 - When done, the `LHDN report` folder opens with **`LHDN_Tax_Worksheet_YA<year>.xlsx`**.
@@ -105,10 +108,12 @@ For **organising & estimating** only — **confirm figures with LHDN / a license
 ```
 HasilKira/
 ├── generate.cmd            ← Windows: double-click this
-├── generate.sh             ← macOS / Linux: run ./generate.sh
+├── generate.command        ← macOS: double-click this
+├── generate.sh             ← Linux (or macOS Terminal): ./generate.sh
 ├── build_tax_workbook.py   ← the generator (Python + openpyxl)
 ├── requirements.txt        ← openpyxl
 ├── README.md               ← this file
+├── .gitattributes
 ├── .gitignore
 └── LHDN report/            ← created on first run; holds LHDN_Tax_Worksheet_YA<year>.xlsx
 ```
@@ -119,6 +124,8 @@ HasilKira/
 
 ## ❓ Troubleshooting
 - **SmartScreen / antivirus warns about the launcher** — it only runs Python locally; click *More info → Run anyway*, or run `python build_tax_workbook.py` yourself.
+- **macOS — "unidentified developer" / "cannot be opened"** — right-click (Control-click) **`generate.command`** → **Open** → **Open** (only needed once). Or clear the quarantine flag: `xattr -d com.apple.quarantine generate.command`.
+- **macOS — double-click does nothing or "permission denied"** — the executable bit was lost (some unzip tools drop it). In Terminal, run once: `chmod +x generate.command generate.sh`, then double-click again.
 - **"Python installed, run again" (Windows)** — close the window and double-click `generate.cmd` once more (Windows needs to refresh PATH).
 - **`externally-managed-environment` error (Linux/macOS)** — `generate.sh` already isolates everything in a local `.venv`, so this should not occur.
 - **No internet** — install Python from python.org, then run `pip install openpyxl`, then launch again.
